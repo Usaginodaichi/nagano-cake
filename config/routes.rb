@@ -4,9 +4,6 @@ Rails.application.routes.draw do
   root to:"public/homes#top"
   get '/about' =>'public/homes#about'
 
-  #   namespace :admin do
-  #   get '/admin/sign_in' => 'admin/sessions#new'
-  # end
 
 # 顧客用
 # URL/customers/sign_in...
