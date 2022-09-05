@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -17,77 +17,77 @@
           <a class="navbar-brand" href="/">
             <span>NaganoCake</span>
           </a>
-    <!--      <button class="navbar-toggler" type="button" data-toggle="callapse" data-target="#navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
-    <!--        <span class="navbar-toggler-icon"></span>-->
-    <!--      </button>-->
-    <!--      <div class="collapse navbar-collapse" id="navbarNavDropdown">-->
-    <!--        <ul class="navbar-nav ml-auto">-->
+          <button class="navbar-toggler" type="button" data-toggle="callapse" data-target="#navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
 
-    <!--          % if user_signed_in? %>-->
-    <!--          <li>-->
-    <!--            %= link_to current_user, class:'nav-link text-light' do %>-->
-    <!--             <i class="fas fa-home"></i>-->
-    <!--              Home-->
-    <!--            % end %>-->
-    <!--          </li>-->
+              <% if admin_signed_in? %>
+      <!--        <li>-->
+      <!--          %= link_to current_admin, class:'nav-link text-light' do %>-->
+      <!--           <i class="fas fa-home"></i>-->
+      <!--            商品一覧-->
+      <!--          % end %>-->
+      <!--        </li>-->
 
-    <!--          <li>-->
-    <!--            %= link_to users_path, class:'nav-link text-light' do %>-->
-    <!--             <i class="fas fa-users"></i>-->
-    <!--             Users-->
-    <!--            % end %>-->
-    <!--          </li>-->
+      <!--        <li>-->
+      <!--          %= link_to users_path, class:'nav-link text-light' do %>-->
+      <!--           <i class="fas fa-users"></i>-->
+      <!--           Users-->
+      <!--          % end %>-->
+      <!--        </li>-->
 
-    <!--          <li>-->
-    <!--            %= link_to books_path, class:'nav-link text-light' do %>-->
-    <!--             <i class="fas fa-book-open"></i>-->
-    <!--             Books-->
-    <!--            % end %>-->
-    <!--          </li>-->
+              <li>
+                <%= link_to admin_root_path, class:'nav-link text-light' do %>
+                 <i class="fas fa-book-open"></i>
+                 注文履歴一覧
+                <% end %>
+              </li>
 
-    <!--          <li>-->
-    <!--           %= link_to destroy_user_session_path, class:'nav-link text-light', method: :delete do %>-->
-    <!--            <i class="fas fa-sign-out-alt"></i>-->
-    <!--            Log out-->
-    <!--           % end %>-->
-    <!--          </li>-->
+              <li>
+                <%= link_to destroy_admin_session_path, class:'nav-link text-light', method: :delete do %>
+                 <i class="fas fa-sign-out-alt"></i>
+                 ログアウト
+                <% end %>
+              </li>
 
-    <!--          % else %>-->
-    <!--          <li>-->
-    <!--            %= link_to root_path, class:'nav-link text-light' do %>-->
-    <!--             <i class="fas fa-home"></i>-->
-    <!--              Home-->
-    <!--            % end %>-->
-    <!--          </li>-->
+              <% else %>
+              <li>
+                <%= link_to about_path, class:'nav-link text-light' do %>
+                 <i class="fas fa-home"></i>
+                  About
+                <% end %>
+              </li>
 
-    <!--          <li>-->
-    <!--            %= link_to home_about_path, class:'nav-link text-light' do %>-->
-    <!--             <i class="fas fa-link"></i>-->
-    <!--             About-->
-    <!--            % end %>-->
-    <!--          </li>-->
-    <!--          <li>-->
-    <!--           %= link_to new_user_registration_path, class:'nav-link text-light' do  %>-->
-    <!--            <i class="fas fa-user-plus"></i>-->
-    <!--            Sign up-->
-    <!--           % end %>-->
-    <!--          </li>-->
-    <!--          <li>-->
-               <!--%= link_to new_user_session_path, class:'nav-link text-light' do  %>-->
-    <!--            <i class="fas fa-sign-in-alt"></i>-->
-    <!--            Log in-->
-    <!--           % end %>-->
-    <!--          </li>-->
-    <!--          % end %>-->
-    <!--        </ul>-->
-    <!--      </div>-->
-    <!--    </div>-->
-    <!--  </nav>-->
+              <!--<li>-->
+              <!--  %= link_to home_about_path, class:'nav-link text-light' do %>-->
+              <!--   <i class="fas fa-link"></i>-->
+              <!--   商品一覧-->
+              <!--  % end %>-->
+              <!--</li>-->
+              <li>
+               <%= link_to new_customer_registration_path, class:'nav-link text-light' do  %>
+                <i class="fas fa-user-plus"></i>
+                新規登録
+               <% end %>
+              </li>
+              <li>
+               <%= link_to new_customer_session_path, class:'nav-link text-light' do  %>
+                <i class="fas fa-sign-in-alt"></i>
+                ログイン
+               <% end %>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
 
-    <!--</header>-->
+    </header>
 
-    <!--<main>-->
-    <!--<p class="notice"><%= notice %></p>-->
+    <main>
+    <p class="notice"><%= notice %></p>
 
     <%= yield %>
   </body>
