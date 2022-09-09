@@ -1,7 +1,6 @@
 class CreateAdminOrders < ActiveRecord::Migration[6.1]
   def change
     create_table :admin_orders do |t|
-
       t.string :postal_code, null: false
       t.string :address, null: false
       t.string :name, null: false
@@ -11,7 +10,6 @@ class CreateAdminOrders < ActiveRecord::Migration[6.1]
       t.integer :status, null: false
       t.datetime :remember_created_at
       t.datetime :remember_updated_at
-
       t.timestamps
     end
   end
