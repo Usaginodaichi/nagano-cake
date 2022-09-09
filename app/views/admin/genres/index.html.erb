@@ -1,23 +1,34 @@
 <!--<h1>Admin::Genres#index</h1>-->
-<div class="container px-5 px-sm-0">
+<div class="container">
   <div class="row">
     <!--バリデーションとフラッシュメッセージの設定は未実装-->
 
-    <h2>ジャンル一覧・追加</h2>
-     <div class="col-auto">
-       <label for="inputPassword6", class="col-form-label">ジャンル名</label>
+    <div class="col-auto">ジャンル一覧・追加</div>
+  </div>
+    <div class="row">
+     <div class="col-auto">ジャンル名</div>
+     <%= form_with model:@genre, url:admin_genres_path do |f| %>
+      <%= f.text_field :name, class:"form_control name", placeholder:"ジャンル名" %>
+      <%= f.submit'新規登録', class:"btn btn-success" %>
      </div>
+    <% end %>
+    </div>
 
-     <div class="col-auto">
-       <%= form_with url:admin_genres_path, model:@genre do |f| %>
-        <div class="form-group">
-          <%= f.text_field :name, class:"form_control name" %>
-        </div>
+  <div class="row">
+     <div class="col-4">
+       <thead>
+         <th>ジャンル</th>
+         <th colspan="2"></th>
+       </thead>
 
-        <div class="form-group">
-          <%= f.submit'新規登録', class: 'btn btn-success' %>
-        </div>
-      <% end %>
+       <tbody>
+        <% @genres.each do |genres| %>
+         <tr>
+          <td><%= genres.name %></td>
+          <td><%= link_to "編集する", edit_admin_genre_path(genres.id) %></td>
+         </tr>
+         <% end %>
+       </tbody>
      </div>
   </div>
 </div>
