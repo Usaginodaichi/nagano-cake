@@ -1,6 +1,6 @@
 <!--<h1>Admin::Genres#index</h1>-->
 <div class="container px-5 px-sm-0">
-  <div class="row g-3 align-items-center">
+  <div class="row">
     <!--バリデーションとフラッシュメッセージの設定は未実装-->
 
     <h2>ジャンル一覧・追加</h2>
@@ -9,20 +9,15 @@
      </div>
 
      <div class="col-auto">
-       <%=form_with model:genre do |f| %>
+       <%= form_with url:admin_genres_path, model:@genre do |f| %>
         <div class="form-group">
-          <%=f.text_field :name, class:"form_control name" %>
+          <%= f.text_field :name, class:"form_control name" %>
         </div>
 
         <div class="form-group">
           <%= f.submit'新規登録', class: 'btn btn-success' %>
         </div>
       <% end %>
-
-
      </div>
-
-
-
   </div>
 </div>

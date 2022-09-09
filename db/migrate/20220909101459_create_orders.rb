@@ -1,7 +1,7 @@
-class CreateAdminOrders < ActiveRecord::Migration[6.1]
+class CreateOrders < ActiveRecord::Migration[6.1]
   def change
-    create_table :admin_orders do |t|
-      t.string :postal_code, null: false
+    create_table :orders do |t|
+ t.string :postal_code, null: false
       t.string :address, null: false
       t.string :name, null: false
       t.integer :shipping_cost, default: 800, null: false
