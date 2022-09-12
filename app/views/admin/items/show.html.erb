@@ -12,11 +12,27 @@
       <div class="form-group">
         <h5>商品名</h5>
         <%= item.name %>
+      </div>
       <div class="form-group">
         <h5>商品説明</h5>
         <%= item.introduction %>
       </div>
+      <div class="form-group">
+        <h5>ジャンル</h5>
+        <%= item.genre.name %>
+      </div>
+      <div class="form-group">
+        <h5>税込価格(税抜価格)</h5>
+        <!--<%= item.price %> 税込価格はcart_itemsを作成したのちに記述-->
+      </div>
+      <div class="form-group">
+        <h5>販売ステータス</h5>
+        <%= item.is_active %>
+      </div>
+      <div class="form-group">
+       <%= link_to'編集する', edit_admin_item_path(item.id), class:'btn btn-secondary' %>
       </div>
     </div>
+    <% end %>
   </div>
 </div>
