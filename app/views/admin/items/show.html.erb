@@ -4,35 +4,33 @@
   </div>
 
   <div class="row">
-    <% @item.each do |item| %>
     <div class="col-auto">
-      <%= image_tag item.image(100.100) %>
+      <%= image_tag @item.get_image(500,500) %>
     </div>
     <div class="col-auto">
       <div class="form-group">
         <h5>商品名</h5>
-        <%= item.name %>
+        <%= @item.name %>
       </div>
       <div class="form-group">
         <h5>商品説明</h5>
-        <%= item.introduction %>
+        <%= @item.introduction %>
       </div>
       <div class="form-group">
         <h5>ジャンル</h5>
-        <%= item.genre.name %>
+        <%= @item.genre.name %>
       </div>
       <div class="form-group">
         <h5>税込価格(税抜価格)</h5>
-        <!--%= item.price %> 税込価格はcart_itemsを作成したのちに記述-->
+        <!--<%= @item.price %> 税込価格はcart_itemsを作成したのちに記述-->
       </div>
       <div class="form-group">
         <h5>販売ステータス</h5>
-        <%= item.is_active %>
+        <%= @item.is_active %>
       </div>
       <div class="form-group">
-       <%= link_to'編集する', edit_admin_item_path(item.id), class:'btn btn-secondary' %>
+       <%= link_to'編集する', edit_admin_item_path(@item.id), class:'btn btn-secondary' %>
       </div>
     </div>
-    <% end %>
   </div>
 </div>

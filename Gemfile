@@ -60,3 +60,6 @@ gem 'devise'
 gem "enum_help"
 
 gem 'kaminari','~> 1.2.1'
+
+# Use Active Storage variant
+gem 'image_processing', '~> 1.2'
