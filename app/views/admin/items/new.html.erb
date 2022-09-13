@@ -4,7 +4,7 @@
   </div>
 
   <div class="row">
-    <%= form_with model:@item, url:new_admin_item_path do |f| %>
+    <%= form_with model:@item, url:admin_items_path do |f| %>
     <div class="col-auto">
      <div class="form-group">
        <label for="inputImage">商品画像</label>
@@ -28,7 +28,10 @@
      </div>
      <div class="form-group">
        <label for="inputIs_active">販売ステータス</label>
-       <%= f.select :is_active, [["販売中","0"],["販売停止中","1"]] %>
+       <%= f.radio_button, :is_active, :true %>
+       <%= f.label :is_active, "販売中" %>
+       <%= f.radio_button, :is_active, :false  %>
+       <%= f.label :is_active, "販売停止中" %>
      </div>
 
      <div class="form-group">

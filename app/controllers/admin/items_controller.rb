@@ -6,8 +6,8 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      flacsh[:notice] = "商品の登録が完了しました"
-      redirect_to admin_items
+      flash[:notice] = "商品の登録が完了しました"
+      redirect_to admin_items_url
     else
       render :new
     end
@@ -27,7 +27,7 @@ class Admin::ItemsController < ApplicationController
 
   private
   def item_params
-    params.permit(:item).permit(:image, :name, :introduction, :genre_id, :price, :is_active)
+    params.require(:item).permit(:image, :name, :introduction, :genre_id, :price, :is_active)
   end
 
 

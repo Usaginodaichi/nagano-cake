@@ -4,7 +4,7 @@
   </div>
 
   <div class="row">
-    <% @item.each do |item|%>
+    <% @item.each do |item| %>
     <div class="col-auto">
       <%= image_tag item.image(100.100) %>
     </div>
@@ -23,7 +23,7 @@
       </div>
       <div class="form-group">
         <h5>税込価格(税抜価格)</h5>
-        <!--<%= item.price %> 税込価格はcart_itemsを作成したのちに記述-->
+        <!--%= item.price %> 税込価格はcart_itemsを作成したのちに記述-->
       </div>
       <div class="form-group">
         <h5>販売ステータス</h5>
