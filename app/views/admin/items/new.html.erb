@@ -3,13 +3,14 @@
       <h2>商品新規登録</h2>
   </div>
 
- <%= render'item', item:@item %>
+  <div class="row">
+  <%= render'item', item:@item %>
+  </div>
 
+  <div class="row">
      <div class="form-group">
        <%= f.submit "新規登録" %>
      </div>
-    </div>
-    <% end %>
   </div>
+  <% end %>
  </div>
-</div>
