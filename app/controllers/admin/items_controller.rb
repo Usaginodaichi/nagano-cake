@@ -27,8 +27,12 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.update(item_params)
-    redirect_to admins_items_url
+    if @item.update(item_params)
+      flash[:notice] = "商品の変更が完了しました"
+      redirect_to admin_items_url
+    else
+      render :edit
+    end
   end
 
   private

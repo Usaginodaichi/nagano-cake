@@ -1,9 +1,6 @@
- <div class="row">
-    <%= form_with model:item, url:admin_items_path do |f| %>
-    <div class="col-auto">
      <div class="form-group">
        <label for="inputImage">商品画像</label>
-       <%= f.file_field:image, placeholder:"商品画像", accept:'image/*' %>
+       <%= f.file_field :image, placeholder:"商品画像", accept:'image/*' %>
      </div>
      <div class="form-group">
        <label for="inputName">商品名</label>
@@ -27,10 +24,4 @@
        <%= f.label :is_active, "販売中" %>
        <%= f.radio_button :is_active, :false  %>
        <%= f.label :is_active, "販売停止中" %>
-      <div class="form-group">
-        <%= f.submit comment %>
-      </div>
      </div>
-     <% end %>
-    </div>
- </div>
