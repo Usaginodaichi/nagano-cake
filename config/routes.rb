@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-# 顧客用
+
 # URL/customers/sign_in...
   devise_for:customers, skip:[:passwords], controllers:{
     registrations: "public/registrations",
@@ -23,6 +23,7 @@ Rails.application.routes.draw do
    resources:genres, only:[:index, :create, :edit, :update]
    resources:items, only:[:new, :index, :create, :show, :edit, :update]
    resources:customers, only:[:index, :show, :edit, :update]
+   resources:orders, only:[:show, :update]
   end
 
 
