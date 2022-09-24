@@ -4,10 +4,12 @@
   </div>
 
   <div class="row">
-    <div class="col-auto">
-      <%= image_tag @item.get_image(500,500) %>
+    <div class="col">
+      <div class="form-group">
+        <%= image_tag @item.get_image(500,500) %>
+      </div>
     </div>
-    <div class="col-auto">
+    <div class="col">
       <div class="form-group">
         <h5>商品名</h5>
         <%= @item.name %>
