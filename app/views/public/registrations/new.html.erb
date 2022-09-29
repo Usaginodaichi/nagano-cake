@@ -1,35 +1,57 @@
-<h2>新規会員登録</h2>
-
-<%= form_with model: @customer, url:new_customer_registration_path, id:'new_customer', class:'new_customer' do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <label for="inputName">名前</label>
-    <%= f.text_field :last_name, autofocus: true, id:"inputName", autocomplete: "last_name" %>
+<div class="container">
+  <div class="row">
+    <h2>新規会員登録</h2>
+    <%= form_with model: @customer, url:new_customer_registration_path, id:'new_customer', class:'new_customer' do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
+    <div class="field">
+      <label for="inputName">名前</label>
+      <h6>(姓)</h6>
+      <%= f.text_field :last_name, autofocus:true, id:"inputName", placeholder:"令和" %>
+      &nbsp;
+      <h6>(名)</h6>
+      <%= f_text_field :first_name, autofocus:true, id:"inputName", placeholder:"道子" %>
+    </div>
+    <div class="field">
+      <label for="inputName_kana">フリガナ</label> <!--　カタカナ自動変換 -->
+      <h6>(セイ)</h6>
+      <%= f.text_field :last_name_kana, autofocus:true, id:"inputName_kana", placeholder:"レイワ" %>
+      &nbsp;
+      <h6>(メイ)</h6>
+      <%= f_text_field :first_name_kana, autofocus:true, id:"inputName_kana", placeholder:"ミチコ" %>
+    </div>
+    <div class="field">
+      <label for="inputemail">メールアドレス</label>
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+    <div class="field">
+      <label for="inputpostal_code">郵便番号(ハイフンなし)</label>　<!-- バリデーション数字7ケタまで -->
+      <%= f.text_field :postal_code, autofocus:true, id:"inputpostal_code", placeholder:"0000000" %>
+    </div>
+    <div class="field">
+      <label for="inputaddress">住所</label>
+      <%= f.text_field :address, autofocus:true, id:"inputaddress", placeholder:"東京都渋谷区代々木神園町0-0" %>
+    </div>
+    <div class="field"> <!--電話番号10ケタまで　-->
+      <label for="inputtelephone_number">電話番号(ハイフンなし)</label>
+      <%= f.text_field :telephone_number, autofocus:true, id:"inputtelephone_number", placeholder:"00000000000" %>
+    </div>
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "新規登録" %>
+    </div>
+    <% end %>
   </div>
 
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
+</div>
 <%= render "public/shared/links" %>
