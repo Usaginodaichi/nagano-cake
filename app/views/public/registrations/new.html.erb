@@ -9,7 +9,7 @@
       <%= f.text_field :last_name, autofocus:true, id:"inputName", placeholder:"令和" %>
       &nbsp;
       <h6>(名)</h6>
-      <%= f_text_field :first_name, autofocus:true, id:"inputName", placeholder:"道子" %>
+      <%= f.text_field :first_name, autofocus:true, id:"inputName", placeholder:"道子" %>
     </div>
     <div class="field">
       <label for="inputName_kana">フリガナ</label> <!--　カタカナ自動変換 -->
@@ -17,7 +17,7 @@
       <%= f.text_field :last_name_kana, autofocus:true, id:"inputName_kana", placeholder:"レイワ" %>
       &nbsp;
       <h6>(メイ)</h6>
-      <%= f_text_field :first_name_kana, autofocus:true, id:"inputName_kana", placeholder:"ミチコ" %>
+      <%= f.text_field :first_name_kana, autofocus:true, id:"inputName_kana", placeholder:"ミチコ" %>
     </div>
     <div class="field">
       <label for="inputemail">メールアドレス</label>
@@ -37,9 +37,9 @@
       <%= f.text_field :telephone_number, autofocus:true, id:"inputtelephone_number", placeholder:"00000000000" %>
     </div>
     <div class="field">
-      <%= f.label :password %>
+      <%= f.label :パスワード %>
       <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <em>(<%= @minimum_password_length %>文字以上)</em>
       <% end %><br />
       <%= f.password_field :password, autocomplete: "new-password" %>
     </div>
@@ -53,5 +53,11 @@
     <% end %>
   </div>
 
+  <h5>既に登録済みの方</h5>
+  <div class="row">
+    <%= link_to "こちら", new_customer_session_path %>
+    <%= "からログインしてください" %>
+  </div>
+
 </div>
-<%= render "public/shared/links" %>
+<!--%= render "public/shared/links" %>-->
