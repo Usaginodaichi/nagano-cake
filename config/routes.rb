@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
 
-
-
 # URL/customers/sign_in...
-  devise_for:customers, skip:[:passwords], controllers:{
+  devise_for :customers, skip:[:passwords], controllers:{
     registrations: "public/registrations",
     sessions:"public/sessions"
   }
@@ -11,7 +9,7 @@ Rails.application.routes.draw do
 
 # 管理者用
 # URL/admin/sign_in...
-  devise_for:admin, skip:[:registrations, :passwords], controllers:{
+  devise_for :admin, skip:[:registrations, :passwords], controllers:{
     sessions:"admin/sessions"
   }
 
@@ -27,11 +25,11 @@ Rails.application.routes.draw do
    resources:orders, only:[:show, :update]
   end
 
-    namespace :public do
-      get '/customers/my_page' =>'customers#show'
-      get '/customers/information/edit' =>'customers#edit'
-      patch '/customers/information' =>'customers#update'
-      get 'customers/unsubscribe' =>'customers#unsubscribe'
-      patch '/customers/withdraw' =>'customers#unsubscribe'
-    end
+  namespace :public do
+    get '/customers/my_page' =>'customers#show'
+    get '/customers/information/edit' =>'customers#edit'
+    patch '/customers/information' =>'customers#update'
+    get 'customers/unsubscribe' =>'customers#unsubscribe'
+    patch '/customers/withdraw' =>'customers#unsubscribe'
+  end
 end
