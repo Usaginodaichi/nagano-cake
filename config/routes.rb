@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'addresses/index'
-    get 'addresses/edit'
-  end
 # URL/customers/sign_in...
   devise_for :customers, skip:[:passwords], controllers:{
     registrations: "public/registrations",
@@ -35,5 +31,6 @@ Rails.application.routes.draw do
     patch '/customers/information' =>'customers#update'
     get 'customers/unsubscribe' =>'customers#unsubscribe'
     patch '/customers/withdraw' =>'customers#unsubscribe'
+    resources:addresses, only:[:index, :edit, :create, :update, :destroy]
   end
 end
