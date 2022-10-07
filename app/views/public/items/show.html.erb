@@ -1,0 +1,13 @@
+<div class="container">
+  <div class"row">
+    <div class="col-auto">
+      <%= image_tag @item.get_image(500,500) %>
+    </div>
+    <div class="col-auto">
+      <%= @item.name %>
+      <%= @item.introduction %>
+      <%= @item.price %>
+  <!--カート機能を実装したのち、個数とカートへ入れるのボタンを作成-->
+    </div>
+  </div>
+</div>
