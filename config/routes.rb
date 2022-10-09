@@ -33,5 +33,6 @@ Rails.application.routes.draw do
     patch '/customers/withdraw' =>'customers#unsubscribe'
     resources:addresses, only:[:index, :edit, :create, :update, :destroy]
     resources:items, only:[:index, :show]
+    resources:cart_items, only[:index, :update, :destroy, :destroy_all, :create]
   end
 end
