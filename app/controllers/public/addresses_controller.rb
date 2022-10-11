@@ -7,9 +7,10 @@ class Public::AddressesController < ApplicationController
 
   def create
     @address = Address.new(address_params)
+    @address.customer_id = current_customer.id
     if @address.save
       flash[:notice] = "住所の登録が完了しました"
-      redirect_to public_addresses_path
+      redirect_to public_addresses_path(@address.id)
     else
       render :index
     end
@@ -32,6 +33,6 @@ class Public::AddressesController < ApplicationController
 
   private
   def address_params
-    params.require(:address).permit(:name, :postal_code, :address)
+    params.require(:address).permit(:postal_code, :address, :name)
   end
 end
