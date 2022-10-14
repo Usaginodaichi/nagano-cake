@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :genre, dependent: :destroy
-  has_many :order_details, dependent: :destory
+  has_many :order_details, dependent: :destroy
   has_many :cart_items, dependent: :destroy
 
 
@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :introduction, presence: true
   validates :price, presence: true
-  # enum is_active:{sale:0, discontinued:1}
+
   has_one_attached :image
 
   def get_image(width,height)
@@ -17,6 +17,11 @@ class Item < ApplicationRecord
       image.attach(io:File.open(file_path),filename:'default-image.jpg',content_type:'image/jpeg')
     end
     image.variant(resize_to_limit:[width,height]).processed
+  end
+
+  # 消費税を求めるメソッド
+  def with_tax_price
+    (price*1.1).floor
   end
 
 end

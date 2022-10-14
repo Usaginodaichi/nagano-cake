@@ -19,9 +19,9 @@
         <tr>
           <td><%= image_tag cart_item.item.get_image(100,100) %>
           <%= cart_item.name %></td>
-          <td><%= cart_item.item.price %></td>
+          <td><%= cart_item.item.with_tax_price %></td>
           <td><%= cart_item.amount %></td>
-          <!--小計<td>%= </td>-->
+          <td><%= cart_item.subtotal %></td>
           <td><%= link_to"削除する",public_cart_items_path(cart_item.id), method: :destroy, "data-confirm" => "本当に削除しますか?", class:"btn btn-sm btn-danger" %></td>
         </tr>
       </tbody>
@@ -32,6 +32,7 @@
     </div>
     <div class="col">
       <%= "合計金額" %>
+      <% @total += cart_item.subtotal %>
       <!--カート内のそれぞれの商品の個数と金額を掛け合わせて、各々の商品の合計金額の計算式を算出し表示-->
     </div>
   </div>

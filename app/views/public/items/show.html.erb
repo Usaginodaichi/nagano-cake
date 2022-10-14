@@ -7,6 +7,12 @@
       <%= @item.name %>
       <%= @item.introduction %>
       <%= @item.price %>
+      <%= form_with model: @cart_item, url:public_cart_items_path do |f| %>
+      <%= f.hidden_field :cart_item, :value => "amount" %>
+      <%= f.select :amount,*[1..10] %>
+      <%= f.submit"カートに入れる" %>
+      <% end %>
+
   <!--カート機能を実装したのち、個数とカートへ入れるのボタンを作成-->
     </div>
   </div>
