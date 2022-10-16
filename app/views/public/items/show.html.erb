@@ -1,5 +1,6 @@
 <div class="container">
   <div class"row">
+    <%= form_with model: @cart_item, url:public_cart_items_path do |f| %>
     <div class="col-auto">
       <%= image_tag @item.get_image(500,500) %>
     </div>
@@ -7,11 +8,10 @@
       <%= @item.name %>
       <%= @item.introduction %>
       <%= @item.price %>
-      <%= form_with model: @cart_item, url:public_cart_items_path do |f| %>
-      <%= f.hidden_field :cart_item, :value => "amount" %>
+      <%= f.hidden_field :item_id, :value => @item.id  %>
       <%= f.select :amount,*[1..10] %>
       <%= f.submit"カートに入れる" %>
-      <% end %>
+    <% end %>
 
   <!--カート機能を実装したのち、個数とカートへ入れるのボタンを作成-->
     </div>
