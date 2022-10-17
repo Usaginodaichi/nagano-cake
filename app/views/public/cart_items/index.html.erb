@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row">
     <h2>ショッピングカート</h2>
+    <%= link_to"カートを空にする", destroy_all_public_cart_items_path,method: :delete, "data-confirm" => "カートの中身を全て削除しますか?", class:"btn btn-sm btn-danger" %>
+
   </div>
 
   <div class="row">
@@ -13,11 +15,10 @@
           <th>小計</th>
           <th></th>
         </tr>
-        <%= @total = 0  %>
       </thead>
       <tbody>
         <% if current_customer.cart_items.present? %>
-         <%= @cart_items.each do |cart_item| %>
+         <% @cart_items.each do |cart_item| %>
          <tr>
            <td><%= image_tag cart_item.item.get_image(100,100) %>
            <%= cart_item.item.name %></td>
@@ -29,21 +30,25 @@
              <% end %>
            </td>
            <td><%= cart_item.subtotal %></td>
-           <td><%= link_to"削除する",public_cart_items_path(cart_item.id), method: :destroy, "data-confirm" => "本当に削除しますか?", class:"btn btn-sm btn-danger" %></td>
+           <td><%= link_to"削除する",public_cart_item_path(cart_item.id, cart_item), method: :delete, "data-confirm" => "本当に削除しますか?", class:"btn btn-sm btn-danger" %></td>
+           <% @total += cart_item.subtotal %>
           </tr>
+      <!--カート内のそれぞれの商品の個数と金額を掛け合わせて、各々の商品の合計金額の計算式を算出し表示-->
          <% end %>
         <% end %>
+        <tr>
+          <th>合計金額</th>
+          <td><%= @total %></td>
+        </tr>
       </tbody>
     </table>
   <div class="row">
     <div class="col">
       <%= link_to"買い物を続ける", public_items_path %>
     </div>
-    <div class="col">
-      <%= "合計金額" %>
-      <% @total += cart_item.subtotal %>
-      <!--カート内のそれぞれの商品の個数と金額を掛け合わせて、各々の商品の合計金額の計算式を算出し表示-->
-    </div>
   </div>
+  </div>
+  <div class="row">
+    <%= link_to"情報入力に進む", new_public_order_path %>
   </div>
 </div>
