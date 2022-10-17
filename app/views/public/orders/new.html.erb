@@ -1,6 +1,16 @@
 <div class="container">
   <div class="row">
+  <%= form_with model: @order, url: new_public_order_path do |f| %>
     <h3>支払方法</h3>
-    
+    <%= f.radio_button:payment_method,Order.payment_methods.key(0) %>
+    <%= f.label:payment_method,Order.payment_methods_i18n[:credit_card] %>
+
+    <%= f.radio_button:payment_method,Order.payment_methods.key(1) %>
+    <%= f.label:payment_method,Order.payment_methods_i18n[:transfer] %>
+
+    <h3>お届け先</h3>
+    <%= f.radio_button:current_customer.address %>
+    <%= f.label:current_customer.postal_code, current_customer.address %>
   </div>
+  <% end %>
 </div>
