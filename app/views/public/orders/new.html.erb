@@ -9,8 +9,14 @@
     <%= f.label:payment_method,Order.payment_methods_i18n[:transfer] %>
 
     <h3>お届け先</h3>
-    <%= f.radio_button:current_customer.address %>
-    <%= f.label:current_customer.postal_code, current_customer.address %>
-  </div>
+    <%= f.radio_button:select_address, 'radio1' %>
+    <%= f.label:select_address, 'ご自身の住所', value: 1 %>
+    <%= "〒" %>
+    <%= current_customer.postal_code %>
+    <%= current_customer.address %>
+
+    <%= f.radio_button:select_address, 'radio2'  %>
+    <%= f.select:select_address, options_from_collection_for_select(Address.all, :id, :address_display) %>
+    </div>
   <% end %>
 </div>
