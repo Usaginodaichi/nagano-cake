@@ -10,7 +10,7 @@ class Public::ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:items).permit(:genr_id, :name, :introduction, :price, :image_id)
+    params.require(:items).permit(:genre_id, :name, :introduction, :price, :image_id)
   end
 
 

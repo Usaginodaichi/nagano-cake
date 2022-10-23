@@ -23,6 +23,7 @@ Rails.application.routes.draw do
    resources:items, only:[:new, :index, :create, :show, :edit, :update]
    resources:customers, only:[:index, :show, :edit, :update]
    resources:orders, only:[:show, :update]
+   patch '/order_details/:id' => '#order_details#:id'
   end
 
   namespace :public do

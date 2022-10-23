@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(version: 2022_10_09_001918) do
     t.integer "item_id", null: false
     t.integer "price", null: false
     t.integer "amount", null: false
-    t.integer "making_status", null: false
+    t.integer "making_status", default: 0, null: false
     t.datetime "remember_created_at"
     t.datetime "remember_updated_at"
     t.datetime "created_at", precision: 6, null: false
