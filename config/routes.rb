@@ -43,6 +43,7 @@ Rails.application.routes.draw do
       collection do
         post 'confirm'
         get 'complete'
+        delete 'destroy_all'
       end
     end
   end
