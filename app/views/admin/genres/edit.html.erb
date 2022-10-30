@@ -1,14 +1,18 @@
 <div class="container">
   <div class="row">
-    <!--バリデーションとフラッシュメッセージの設定は未実装-->
-
-    <div class="col-auto">ジャンル編集</div>
+    <div class="col-auto">
+      <h4>ジャンル編集</h4>
+    </div>
   </div>
     <div class="row">
-     <div class="col-auto">ジャンル名</div>
-     <%= form_with model:@genre, url:admin_genre_path(@genre.id), method: :patch do |f| %>
-      <%= f.text_field :name, class:"form_control name", placeholder:"ジャンル名" %>
-      <%= f.submit'変更を保存', class:"btn btn-success" %>
-     </div>
-    <% end %>
+      <div class="col-auto pl-sm-4">
+        <label>ジャンル名</label>
+      </div>
+      <%= form_with model:@genre, url:admin_genre_path(@genre.id), method: :patch do |f| %>
+      <div class="col-auto pl-sm-5">
+         <%= f.text_field :name, class:"form_control name", placeholder:"ジャンル名" %>
+         <%= f.submit'変更を保存', class:"btn btn-success" %>
+      </div>
+     <% end %>
     </div>
+</div>

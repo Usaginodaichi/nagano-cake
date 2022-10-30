@@ -1,8 +1,8 @@
 class Admin::HomesController < ApplicationController
-    before_action :authenticate_admin!
+    # before_action :authenticate_admin!
 
   def top
-    # @orders = Customer.all 会員idから引っ張る　現在未設定
+    @orders = Customer.all 
   end
 
 end

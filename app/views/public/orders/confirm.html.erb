@@ -68,11 +68,12 @@
   <%= form_with model: @order, url: public_orders_path do |f| %>
    <%= f.hidden_field :postal_code %>
    <%= f.hidden_field :address %>
-   <%= f.hidden_field :name  %>
+   <%= f.hidden_field :name %>
    <!--%= f.hidden_field :shipping_cost => @order.id %>-->
    <!--%= f.hidden_field :total_payment => @order.id %>-->
    <%= f.hidden_field :payment_method %>
    <%= f.hidden_field :total_payment, :value => @total + @order.shipping_cost %>
+   <%= f.hidden_field :status, :value => @order.status %>
    <%= f.submit"注文を確定する" %>
   <% end %>
   </div>

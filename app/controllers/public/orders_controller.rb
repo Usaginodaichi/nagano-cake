@@ -1,43 +1,48 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
   def new
     @order = Order.new
   end
 
   def confirm
-    @order = Order.new(order_params)
     @total = 0
     @cart_items = current_customer.cart_items.all
+    @order = Order.new(order_params)
     if params[:order][:select_address] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.first_name + current_customer.last_name
+      @order.status = 0
     elsif params[:order][:select_address] == "1"
       @address = Address.find(params[:order][:address_id])
       @order.postal_code = @address.postal_code
       @order.address = @address.address
       @order.name = @address.name
+      @order.status = 0
     else
       @address = current_customer.addresses.new(address_params)
       @order.postal_code = @address.postal_code
       @order.address = @address.address
       @order.name = @address.name
+      @order.status = 0
     end
   end
 
   def create
-    @order = Order.new(order_params)
+    @cart_items = current_customer.cart_items.all
+    @order = current_customer.orders.new(order_params)
     @order.save
-    @cart_items = CartItem.all
-    @cart_items.each do |cart_item|
-      @order_details = OrderDetail.new
-      @order_details.item_id = cart_item.item_id
-      @order_details.order_id = @order.id
-      @order_details.amount = cart_item.amount
-      @order_details.price = cart_item.amount * cart_item.item.price
-      @order_details.save
-    end
-    redirect_to complete_public_orders_path
-    @cart_items.destroy_all
+      @cart_items.each do |cart_item|
+        @order_details = OrderDetail.new
+        @order_details.order_id = @order.id
+        @order_details.item = cart_item.item
+        @order_details.amount = cart_item.amount
+        @order_details.price = cart_item.amount * cart_item.item.price
+        @order_details.save
+        binding.pry
+      end
+      @cart_items.destroy_all
+      redirect_to complete_public_orders_path
   end
 
 
@@ -45,7 +50,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = current_customer.orders.all
   end
 
   def show
@@ -53,11 +58,11 @@ class Public::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :total_payment)
+    params.require(:order).permit(:customer_id, :payment_method, :postal_code, :address, :name, :status, :total_payment)
   end
 
   def address_params
-    params.require(:order).permit(:name, :postal_code, :address)
+    params.require(:address).permit(:name, :postal_code, :address)
   end
 
   # def order_detail_params

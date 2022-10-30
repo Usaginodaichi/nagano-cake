@@ -45,8 +45,6 @@ ActiveRecord::Schema.define(version: 2022_10_09_001918) do
     t.string "name", null: false
     t.string "postal_code", null: false
     t.string "address", null: false
-    t.datetime "remember_created_at"
-    t.datetime "remember_updated_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -82,8 +80,6 @@ ActiveRecord::Schema.define(version: 2022_10_09_001918) do
     t.integer "item_id", null: false
     t.integer "customer_id", null: false
     t.integer "amount", null: false
-    t.datetime "remember_created_at"
-    t.datetime "remember_updated_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -111,8 +107,6 @@ ActiveRecord::Schema.define(version: 2022_10_09_001918) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "remember_created_at"
-    t.datetime "remember_updated_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -123,8 +117,6 @@ ActiveRecord::Schema.define(version: 2022_10_09_001918) do
     t.text "introduction", null: false
     t.integer "price", null: false
     t.boolean "is_active", default: true, null: false
-    t.datetime "remember_created_at"
-    t.datetime "remember_updated_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -135,8 +127,6 @@ ActiveRecord::Schema.define(version: 2022_10_09_001918) do
     t.integer "price", null: false
     t.integer "amount", null: false
     t.integer "making_status", default: 0, null: false
-    t.datetime "remember_created_at"
-    t.datetime "remember_updated_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -150,8 +140,6 @@ ActiveRecord::Schema.define(version: 2022_10_09_001918) do
     t.integer "total_payment", null: false
     t.integer "payment_method", null: false
     t.integer "status", null: false
-    t.datetime "remember_created_at"
-    t.datetime "remember_updated_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
