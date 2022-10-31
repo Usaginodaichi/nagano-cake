@@ -11,6 +11,7 @@ class Admin::GenresController < ApplicationController
       flash[:notice] = "ジャンルの登録が完了しました"
       redirect_to admin_genres_path(@genre.id)
     else
+      flash[:notice] = "ジャンルの名前を入力してください"
       @genres = Genre.all
       render :index
     end

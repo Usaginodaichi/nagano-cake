@@ -19,3 +19,8 @@ ja:
     production : "製作中"
     completed : "制作完了"
 
+ boolean:
+  item:
+   is_active:
+    true : "販売中"
+    false : "販売停止中"

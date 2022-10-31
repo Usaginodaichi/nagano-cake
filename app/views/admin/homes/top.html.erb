@@ -16,7 +16,9 @@
        <% @orders.each do |order| %>
          <tr>
            <td>
-            <%= order.remember_created_at %> <!--注文履歴詳細のリンクを貼る -->
+            <%= link_to admin_order_path(order) do %>
+             <%= order.created_at %>
+            <% end %>
            </td>
            <td>
             <%= order.name %>
