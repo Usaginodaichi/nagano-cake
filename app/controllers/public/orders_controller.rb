@@ -39,7 +39,6 @@ class Public::OrdersController < ApplicationController
         @order_details.amount = cart_item.amount
         @order_details.price = cart_item.amount * cart_item.item.price
         @order_details.save
-        binding.pry
       end
       @cart_items.destroy_all
       redirect_to complete_public_orders_path
@@ -54,6 +53,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
   end
 
   private
