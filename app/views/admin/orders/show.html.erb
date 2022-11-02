@@ -3,11 +3,11 @@
     <h2>注文履歴詳細</h2>
     <div class="form-group">
       <h5>購入者</h5>
-      <%= @order.customer.name %>
+      <%= @order.name %>
     </div>
     <div class="form-group">
       <h5>注文日</h5>
-      <%= @order.created_at %>
+      <%= @order.created_at.strftime("%Y-%m-%d") %>
     </div>
     <div class="form-group">
       <h5>配送先</h5>
@@ -17,11 +17,14 @@
     </div>
     <div class="form-group">
       <h5>支払方法</h5>
-      <!--enum未実装%= @order.payment_method %>-->
+      <%= @order.payment_method_i18n %>
     </div>
     <div class="form-group">
       <h5>注文ステータス</h5>
-      <!--enum未実装%= @order.status %>-->
+       <%= form_with model: @order, url:admin_order_path(@order), method: :patch do |f| %>
+       <%= f.select :status, [['入金待ち', 0],['入金確認', 1],['制作中', 2],['発送準備中',3],['発送済み',4]] %>
+       <%= f.submit "更新", class:"btn btn-success" %>
+       <% end %>
     </div>
   </div>
 <!--下記コードは仮コード、orderdetailsとの関連性を再試行する必要あり-->
@@ -39,14 +42,18 @@
         </thead>
 
         <tbody>
-          <%= @order.each do |order| %>
+          <% @order_details.each do |order_detail| %>
           <tr>
-            <td><%= order.order_detail.item_id.name %></td>
-            <td><%= order.order_detail.price %></td>
-            <td><$= order.order_detail.amount</td>
-            <td><%= order.order_detail.subtotal %></td>
-            <td><%= order.order_detail.making_status %></td>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.price %></td>
+            <td><%= order_detail.amount %></td>
+            <td><%= order_detail.subtotal %></td>
+            <td><%= form_with model: order_detail, url:admin_order_path(@order_details), method: :patch do |f| %>
+             <%= f.select :making_status, [['制作不可', 0],['制作待ち', 1],['制作中', 2],['制作完了',3]] %>
+             <%= f.submit "更新", class:"btn btn-success" %>
+             <% end %></td>
           </tr>
+          <% end %>
         </tbody>
       </table>
     </div>

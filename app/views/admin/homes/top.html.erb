@@ -24,7 +24,7 @@
             <%= order.name %>
            </td>
            <td>
-            <!--数量　order_detailsから引っ張る-->
+            <%= order.order_details.sum(:amount) %>
            </td>
            <td>
             <%= order.status %>

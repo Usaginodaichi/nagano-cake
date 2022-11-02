@@ -33,7 +33,11 @@
         </div>
       <div class="form-group">
         <h5>会員ステータス</h5>
-        <%= @customer.is_deleted %>
+        <% if @customer.is_deleted == false %>
+         <span>有効</span>
+        <% else %>
+         <span>退会</span>
+        <% end %>
       </div>
     </div>
   </div>
