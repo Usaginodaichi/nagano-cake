@@ -22,7 +22,7 @@
     <div class="form-group">
       <h5>注文ステータス</h5>
        <%= form_with model: @order, url:admin_order_path(@order), method: :patch do |f| %>
-       <%= f.select :status, [['入金待ち', 0],['入金確認', 1],['制作中', 2],['発送準備中',3],['発送済み',4]] %>
+       <%= f.select :status, [['入金待ち', 'waiting'],['入金確認', 'confirmation'],['制作中', 'production'],['発送準備中','shipping_preparation'],['発送済み','sent']] %>
        <%= f.submit "更新", class:"btn btn-success" %>
        <% end %>
     </div>
@@ -42,14 +42,14 @@
         </thead>
 
         <tbody>
-          <% @order_details.each do |order_detail| %>
+          <% @order_detail.each do |order_detail| %>
           <tr>
             <td><%= order_detail.item.name %></td>
             <td><%= order_detail.price %></td>
             <td><%= order_detail.amount %></td>
             <td><%= order_detail.subtotal %></td>
-            <td><%= form_with model: order_detail, url:admin_order_path(@order_details), method: :patch do |f| %>
-             <%= f.select :making_status, [['制作不可', 0],['制作待ち', 1],['制作中', 2],['制作完了',3]] %>
+            <td><%= form_with model: order_detail, url:admin_order_detail_path(order_detail), method: :patch do |f| %>
+             <%= f.select :making_status, [['制作不可', 'production_not_allowed'],['制作待ち', 'waiting'],['制作中', 'production'],['制作完了','completed']] %>
              <%= f.submit "更新", class:"btn btn-success" %>
              <% end %></td>
           </tr>
