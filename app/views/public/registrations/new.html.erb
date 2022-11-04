@@ -1,24 +1,40 @@
 <div class="container">
-  <div class="row">
-    <h2>新規会員登録</h2>
+  <h2 class="px-3 mx-auto">
+    <strong>新規会員登録</strong>
+  </h2>
+
+  <div class="form-group">
     <%= form_with model: @customer, url:customer_registration_path, id:'new_customer', class:'new_customer' do |f| %>
     <%= render "public/shared/error_messages", resource: resource %>
+
     <div class="field">
-      <label for="inputName">名前</label>
-      <h6>(姓)</h6>
-      <%= f.text_field :last_name, autofocus:true, id:"inputName", placeholder:"令和" %>
-      &nbsp;
-      <h6>(名)</h6>
-      <%= f.text_field :first_name, autofocus:true, id:"inputName", placeholder:"道子" %>
+      <div class="mb-3 row">
+        <label for="inputName" class="col-auto col-form-label">名前</label>
+        <div class="col-auto">
+          <ul>(姓)
+          <%= f.text_field :last_name, autofocus:true, id:"inputName", placeholder:"令和" %>
+          </ul>
+        </div>
+        <div class="col-auto">
+          <ul>(名)
+          <%= f.text_field :first_name, autofocus:true, id:"inputName", placeholder:"道子" %>
+          </ul>
+        </div>
+      </div>
     </div>
     <div class="field">
-      <label for="inputName_kana">フリガナ</label> <!--　カタカナ自動変換 -->
-      <h6>(セイ)</h6>
-      <%= f.text_field :last_name_kana, autofocus:true, id:"inputName_kana", placeholder:"レイワ" %>
-      &nbsp;
-      <h6>(メイ)</h6>
-      <%= f.text_field :first_name_kana, autofocus:true, id:"inputName_kana", placeholder:"ミチコ" %>
-    </div>
+      <div class="mb-3 row">
+        <label for="inputName_kana" class="col-auto col-form-label">フリガナ</label> <!--　カタカナ自動変換 -->
+        <div class="col-auto">
+          <h5>(セイ)</h5>
+          <%= f.text_field :last_name_kana, autofocus:true, id:"inputName_kana", placeholder:"レイワ" %>
+          </div>
+          <div class="col-auto">
+            <h6>(メイ)</h6>
+            <%= f.text_field :first_name_kana, autofocus:true, id:"inputName_kana", placeholder:"ミチコ" %>
+          </div>
+      </div>
+
     <div class="field">
       <label for="inputemail">メールアドレス</label>
       <%= f.label :email %><br />
@@ -58,6 +74,6 @@
     <%= link_to "こちら", new_customer_session_path %>
     <%= "からログインしてください" %>
   </div>
-
+ </div>
 </div>
 <!--%= render "public/shared/links" %>-->

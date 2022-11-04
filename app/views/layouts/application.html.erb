@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>NaganoCake</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale-1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,8 +12,8 @@
 
   <body class="d-flex flex-column vh-100">
     <header class="shadow-sm">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-orange">
+        <div class="container bg-warning">
           <a class="navbar-brand" href="/">
             <span>NaganoCake</span>
           </a>
@@ -25,35 +25,35 @@
 
               <% if admin_signed_in? %>
               <li>
-                <%= link_to admin_items_path, class:'nav-link text-light' do %>
+                <%= link_to admin_items_path, class:'nav-link text-dark' do %>
                  <i class="fas fa-home"></i>
                   商品一覧
                 <% end %>
               </li>
 
               <li>
-                <%= link_to admin_customers_path, class:'nav-link text-light' do %>
+                <%= link_to admin_customers_path, class:'nav-link text-dark' do %>
                  <i class="fas fa-users"></i>
                  会員一覧
                 <% end %>
               </li>
 
               <li>
-                <%= link_to admin_root_path, class:'nav-link text-light' do %>
+                <%= link_to admin_root_path, class:'nav-link text-dark' do %>
                  <i class="fas fa-book-open"></i>
                  注文履歴一覧
                 <% end %>
               </li>
 
               <li>
-                <%= link_to admin_genres_path, class:'nav-link text-light' do %>
+                <%= link_to admin_genres_path, class:'nav-link text-dark' do %>
                  <i class="fas fa-book-open"></i>
                  ジャンル一覧
                 <% end %>
               </li>
 
               <li>
-                <%= link_to destroy_admin_session_path, class:'nav-link text-light', method: :delete do %>
+                <%= link_to destroy_admin_session_path, class:'nav-link text-dark', method: :delete do %>
                  <i class="fas fa-sign-out-alt"></i>
                  ログアウト
                 <% end %>
@@ -63,28 +63,28 @@
               <ul>ようこそ<%= current_customer.first_name %>
               <%= current_customer.last_name %>!!</ul>
               <li>
-                <%= link_to public_customers_my_page_path,class:'nav-link text-light' do %>
+                <%= link_to public_customers_my_page_path,class:'nav-link text-dark' do %>
                 <i class="fas fa-sign-in-alt"></i>
                 マイページ
                 <% end %>
               </li>
 
               <li>
-                <%= link_to public_items_path, class:'nav-link text-light' do %>
+                <%= link_to public_items_path, class:'nav-link text-dark' do %>
                 <i class="fas fa-sign-in-alt"></i>
                 商品一覧
                 <% end %>
               </li>
 
               <li>
-                <%= link_to public_cart_items_path, class:'nav-link text-light' do %>
+                <%= link_to public_cart_items_path, class:'nav-link text-dark' do %>
                 <i class="fas fa-sign-in-alt"></i>
                 カート
                 <% end %>
               </li>
 
               <li>
-                <%= link_to destroy_customer_session_path, class:'nav-link text-light', method: :delete do %>
+                <%= link_to destroy_customer_session_path, class:'nav-link text-dark', method: :delete do %>
                 <i class="fas fa-sign-in-alt"></i>
                 ログアウト
                 <% end %>
@@ -92,26 +92,26 @@
 
               <% else %>
               <li>
-                <%= link_to about_path, class:'nav-link text-light' do %>
+                <%= link_to about_path, class:'nav-link text-dark' do %>
                  <i class="fas fa-home"></i>
                   About
                 <% end %>
               </li>
 
-              <!--<li>-->
-              <!--  %= link_to , class:'nav-link text-light' do %>-->
-              <!--   <i class="fas fa-link"></i>-->
-              <!--   商品一覧-->
-              <!--  % end %>-->
-              <!--</li>-->
               <li>
-               <%= link_to new_customer_registration_path, class:'nav-link text-light' do  %>
+                <%= link_to public_items_path, class:'nav-link text-dark' do %>
+                 <i class="fas fa-link"></i>
+                 商品一覧
+                <% end %>
+              </li>
+              <li>
+               <%= link_to new_customer_registration_path, class:'nav-link text-dark' do  %>
                 <i class="fas fa-user-plus"></i>
                 新規登録
                <% end %>
               </li>
               <li>
-               <%= link_to new_customer_session_path, class:'nav-link text-light' do  %>
+               <%= link_to new_customer_session_path, class:'nav-link text-dark' do  %>
                 <i class="fas fa-sign-in-alt"></i>
                 ログイン
                <% end %>
@@ -128,5 +128,16 @@
     <p class="notice"><%= notice %></p>
 
     <%= yield %>
+    </main>
+
+    <footer>
+      <div class="container mt-5 bg-warning">
+        <div class="row">
+          <div class="mx-auto">
+            <p>CopyRight NaganoCake.inc</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
