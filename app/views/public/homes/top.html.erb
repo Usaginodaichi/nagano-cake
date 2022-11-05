@@ -10,26 +10,23 @@
     </div>
 
     <div class="row p-md-3">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
+      <div class="col-md-2"></div>
+      <div class="col-md-10">
         <h4>新着商品</h4>
       </div>
     </div>
 
-    <div class="row positon-relative justify-content-md-center mx-auto my-auto">
+    <div class="row justify-content-md-center mx-auto my-auto">
         <% @items.last(4).each do |item| %>
-         <div class="mx-3">
+         <div class="card">
              <%= link_to public_item_path(item) do %>
-              <%= image_tag item.get_image(100,100) %>
+              <%= image_tag item.get_image(200,200), class:"card-img-top"; %>
              <% end %>
-             <div class="row mt-3">
-                 <span class="px-3"><%= item.name %></span>
-             </div>
-             <div class="row mt-1">
-                 <span class="Itemprice">¥<%= item.with_tax_price %></span>
+             <div class="card-body">
+             <%= item.name %></br>
+             <%="¥" %><%= item.with_tax_price %>
              </div>
           </div>
-          <% end %>
-    </div>
+         <% end %>
     <!--public/itemsを作成したのちに新着画像表記のコードを記述する-->
 </div>

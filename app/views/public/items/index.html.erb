@@ -1,14 +1,27 @@
 <div class="container">
   <div class="row">
-    <h2>商品一覧</h2>
-    <% @items.each do |item| %>
-    <div class="col-auto">
-      <%= link_to public_item_path(item.id) do %>
-       <%= image_tag item.get_image(500,500) %>
+    <div class="col-xs-3">
+      <h2>商品一覧(全
+      <%= @items.count %>
+      件)</h2>
+      <% @items.each do |item| %>
+      <div class="items-box">
+        <table class="table">
+          <tr>
+            <th><%= link_to public_item_path(item.id) do %>
+            <%= image_tag item.get_image(100,100) %>
+            <% end %></th>
+          </tr>
+          <tr>
+            <%= item.name %>
+          </tr>
+          <tr>
+            <%= item.price %>
+          </tr>
+        </table>
+      </div>
       <% end %>
-      <%= item.name %>
-      <%= item.price %>
-    <% end %>
+      <%= paginate @items %>
     </div>
   </div>
 </div>
