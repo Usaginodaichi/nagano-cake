@@ -1,36 +1,39 @@
 <div class="container">
   <div class="row">
     <h2>注文履歴詳細</h2>
-    <div class="form-group">
-      <h5>購入者</h5>
-      <%= @order.name %>
-    </div>
-    <div class="form-group">
-      <h5>注文日</h5>
-      <%= @order.created_at.strftime("%Y-%m-%d") %>
-    </div>
-    <div class="form-group">
-      <h5>配送先</h5>
-      <%= @order.postal_code %>&nbsp;
-      <%= @order.address %>&nbsp;
-      <%= @order.name %>
-    </div>
-    <div class="form-group">
-      <h5>支払方法</h5>
-      <%= @order.payment_method_i18n %>
-    </div>
-    <div class="form-group">
-      <h5>注文ステータス</h5>
-       <%= form_with model: @order, url:admin_order_path(@order), method: :patch do |f| %>
-       <%= f.select :status, [['入金待ち', 'waiting'],['入金確認', 'confirmation'],['制作中', 'production'],['発送準備中','shipping_preparation'],['発送済み','sent']] %>
-       <%= f.submit "更新", class:"btn btn-success" %>
-       <% end %>
-    </div>
   </div>
-<!--下記コードは仮コード、orderdetailsとの関連性を再試行する必要あり-->
+
+  <div class="row mt-3">
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>購入者</td>
+          <td><%= @order.name %></td>
+        </tr>
+        <tr>
+          <td>注文日</td>
+          <td><%= @order.created_at.strftime("%Y-%m-%d") %></td>
+        </tr>
+        <tr>
+          <td>配送先</td>
+          <td><%= @order.postal_code %>&nbsp;<%= @order.address %>&nbsp;<%= @order.name %></td>
+        </tr>
+        <tr>
+          <td>支払方法</td>
+          <td><%= @order.payment_method_i18n %></td>
+        </tr>
+
+        <tr>
+          <td>注文ステータス</td>
+          <%= form_with model: @order, url:admin_order_path(@order), method: :patch do |f| %>
+          <td><%= f.select :status, [['入金待ち', 'waiting'],['入金確認', 'confirmation'],['制作中', 'production'],['発送準備中','shipping_preparation'],['発送済み','sent']] %>
+          <%= f.submit "更新", class:"btn btn-success" %></td>
+          <% end %>
+        </tr>
+    </div>
   <div class="row">
-    <div class="col-auto">
-      <table>
+    <div class="col-sm-9">
+      <table class="table border">
         <thead>
           <tr>
             <th>商品名</th>
@@ -45,31 +48,38 @@
           <% @order_detail.each do |order_detail| %>
           <tr>
             <td><%= order_detail.item.name %></td>
-            <td><%= order_detail.price %></td>
+            <td><%= order_detail.price %><%="円" %></td>
             <td><%= order_detail.amount %></td>
-            <td><%= order_detail.subtotal %></td>
-            <td><%= form_with model: order_detail, url:admin_order_detail_path(order_detail), method: :patch do |f| %>
-             <%= f.select :making_status, [['制作不可', 'production_not_allowed'],['制作待ち', 'waiting'],['制作中', 'production'],['制作完了','completed']] %>
-             <%= f.submit "更新", class:"btn btn-success" %>
-             <% end %></td>
+            <td><%= order_detail.subtotal %><%= "円" %></td>
+            <td>
+              <%= form_with model: order_detail, url:admin_order_detail_path(order_detail), method: :patch do |f| %>
+              <%= f.select :making_status, [['制作不可', 'production_not_allowed'],['制作待ち', 'waiting'],['制作中', 'production'],['制作完了','completed']] %>
+              <%= f.submit "更新", class:"btn btn-success" %>
+              <% end %>
+            </td>
           </tr>
           <% end %>
         </tbody>
       </table>
     </div>
-    <div class="col-auto">
-      <div class="form-group">
-        <h5>商品合計</h5>
-        <%= @order.total_payment %>
-      </div>
-      <div class="form-group">
-        <h5>送料</h5>
-        <%= @order.shipping_cost %>
-      </div>
-      <div class="form-group">
-        <h5>請求額合計</h5>
-        <%= @order.sum_of_order_price %>
-      </div>
+
+    <div class="col-sm-3">
+      <table class="table border">
+        <tbody>
+          <tr>
+            <td>商品合計</td>
+            <td><%= @order.total_payment %><%="円" %></td>
+          </tr>
+          <tr>
+            <td>送料</td>
+            <td><%= @order.shipping_cost %><%= "円" %></td>
+          </tr>
+          <tr>
+            <td>請求額合計</td>
+            <td><%= @order.sum_of_order_price %><%= "円" %></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

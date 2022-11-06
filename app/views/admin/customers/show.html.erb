@@ -1,19 +1,19 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-md-5">
-      <h3><%= @customer.last_name %>
-      <%= @customer.first_name %>さんの会員詳細</h2>
+      <h3><%= @customer.first_name %>
+      <%= @customer.last_name %>さんの会員詳細</h2>
       <div class="form-group">
         <h5>会員ID</h5>
         <%= @customer.id %>
       </div>
       <div class="form-group">
         <h5>氏名</h5>
-        <%= @customer.last_name %>&nbsp;<%= @customer.first_name %>
+        <%= @customer.first_name %>&nbsp;<%= @customer.last_name %>
       </div>
       <div class="form-group">
         <h5>フリガナ</h5>
-        <%= @customer.last_name_kana %>&nbsp;<%= @customer.first_name_kana %>
+        <%= @customer.first_name_kana %>&nbsp;<%= @customer.last_name_kana %>
       </div>
       <div class="form-group">
         <h5>郵便番号</h5>

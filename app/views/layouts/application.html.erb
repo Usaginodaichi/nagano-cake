@@ -2,9 +2,10 @@
 <html>
   <head>
     <title>NaganoCake</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale-1">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -26,7 +27,7 @@
               <% if admin_signed_in? %>
               <li>
                 <%= link_to admin_items_path, class:'nav-link text-dark' do %>
-                 <i class="fa-solid fa-cake-candles"></i>
+                <i class="fas fa-birthday-cake"></i>
                   商品一覧
                 <% end %>
               </li>
@@ -40,14 +41,14 @@
 
               <li>
                 <%= link_to admin_root_path, class:'nav-link text-dark' do %>
-                 <i class="fas fa-book-open"></i>
+                 <i class="fas fa-cart-arrow-down"></i>
                  注文履歴一覧
                 <% end %>
               </li>
 
               <li>
                 <%= link_to admin_genres_path, class:'nav-link text-dark' do %>
-                 <i class="fas fa-book-open"></i>
+                 <i class="fas fa-cookie"></i>
                  ジャンル一覧
                 <% end %>
               </li>
@@ -71,7 +72,7 @@
 
               <li>
                 <%= link_to public_items_path, class:'nav-link text-dark' do %>
-                <i class="fa-solid fa-cake-candles"></i>
+                <i class="fas fa-birthday-cake"></i>
                 商品一覧
                 <% end %>
               </li>
@@ -93,14 +94,14 @@
               <% else %>
               <li>
                 <%= link_to about_path, class:'nav-link text-dark' do %>
-                 <i class="fas fa-home"></i>
+                 <i class="far fa-store"></i>
                   About
                 <% end %>
               </li>
 
               <li>
                 <%= link_to public_items_path, class:'nav-link text-dark' do %>
-                 <i class="fa-thin fa-cake-candles"></i>
+                 <i class="fas fa-birthday-cake"></i>
                  商品一覧
                 <% end %>
               </li>
@@ -112,7 +113,7 @@
               </li>
               <li>
                <%= link_to new_customer_session_path, class:'nav-link text-dark' do  %>
-                <i class="fas fa-sign-in-alt"></i>
+               <i class="fas fa-sign-in-alt"></i>
                 ログイン
                <% end %>
               </li>

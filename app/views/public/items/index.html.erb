@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-3">
+    <div class="col-auto">
       <h2>商品一覧(全
       <%= @items.count %>
       件)</h2>
@@ -9,14 +9,15 @@
         <table class="table">
           <tr>
             <th><%= link_to public_item_path(item.id) do %>
-            <%= image_tag item.get_image(100,100) %>
+            <%= image_tag item.get_image(200,200) %>
             <% end %></th>
-          </tr>
-          <tr>
-            <%= item.name %>
-          </tr>
-          <tr>
-            <%= item.price %>
+            <td>
+              <%= item.name %>
+            </td>
+            <td>
+              <%= "¥" %>
+              <%= item.price %>
+            </td>
           </tr>
         </table>
       </div>
