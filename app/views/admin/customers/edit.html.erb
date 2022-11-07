@@ -15,14 +15,14 @@
       <%= form_with model: @customer, url:admin_customer_path(@customer), method: :patch do |f| %>
       <div class="form-group">
         <label for="inputname">氏名</label>
-        <%= f.text_field :first_name, autofocus:true, id:"inputName", placeholder:"姓" %>&nbsp;
-        <%= f.text_field :last_name, autofocus:true, id:"inputName", placeholder:"名" %>
+        <%= f.text_field :last_name, autofocus:true, id:"inputName", placeholder:"姓" %>&nbsp;
+        <%= f.text_field :first_name, autofocus:true, id:"inputName", placeholder:"名" %>
       </div>
 
       <div class="form-group">
         <label for="inputname_kana">フリガナ</label>
-        <%= f.text_field :first_name_kana, autofocus:true, id:"inputName_kana", placeholder:"セイ" %>&nbsp;
-        <%= f.text_field :last_name_kana, autofocus:true, id:"inputName_kana", placeholder:"メイ" %>
+        <%= f.text_field :last_name_kana, autofocus:true, id:"inputName_kana", placeholder:"セイ" %>&nbsp;
+        <%= f.text_field :first_name_kana, autofocus:true, id:"inputName_kana", placeholder:"メイ" %>
       </div>
 
       <div class="form-group">

@@ -20,11 +20,18 @@ class Public::OrdersController < ApplicationController
       @order.name = @address.name
       @order.status = 0
     else
-      @address = current_customer.addresses.new(address_params)
-      @order.postal_code = @address.postal_code
-      @order.address = @address.address
-      @order.name = @address.name
-      @order.status = 0
+      @address = Address.new(address_params)
+      @address.customer_id = current_customer.id
+      if @address.save
+        @order.postal_code = @address.postal_code
+        @order.address = @address.address
+        @order.name = @address.name
+        @order.status = 0
+      else
+        @cart_items = current_customer.cart_items.all
+        @order = Order.new(order_params)
+        render :confirm
+      end
     end
   end
 
@@ -63,7 +70,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def address_params
-    params.require(:address).permit(:name, :postal_code, :address)
+    params.permit(:name, :postal_code, :address)
   end
 
   # def order_detail_params
