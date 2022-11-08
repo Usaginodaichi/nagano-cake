@@ -8,7 +8,7 @@
       <tbody>
         <tr>
           <td>購入者</td>
-          <td><%= @order.name %></td>
+          <td><%= @order.customer.last_name %><%= @order.customer.first_name %></td>
         </tr>
         <tr>
           <td>注文日</td>
@@ -25,10 +25,12 @@
 
         <tr>
           <td>注文ステータス</td>
+          <td>
           <%= form_with model: @order, url:admin_order_path(@order), method: :patch do |f| %>
-          <td><%= f.select :status, [['入金待ち', 'waiting'],['入金確認', 'confirmation'],['制作中', 'production'],['発送準備中','shipping_preparation'],['発送済み','sent']] %>
-          <%= f.submit "更新", class:"btn btn-success" %></td>
+           <%= f.select :status, [['入金待ち', 'waiting'],['入金確認', 'confirmation'],['制作中', 'production'],['発送準備中','shipping_preparation'],['発送済み','sent']] %>
+           <%= f.submit "更新", class:"btn btn-success" %>
           <% end %>
+          </td>
         </tr>
     </div>
   <div class="row">

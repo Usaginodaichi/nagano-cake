@@ -1,17 +1,21 @@
 <div class="container">
   <%= form_with model: @cart_item, url:public_cart_items_path do |f| %>
-  <div class"row">
-    <div class="col-md-5">
-      <%= image_tag @item.get_image(300,300) %>
+  <div class="card mb-3 border-0" style="max-width: 540px;">
+    <div class"row g-0">
+    <div class="col-md-4">
+      <%= image_tag @item.get_image(400,400) %>
     </div>
     <div class="col-md-7">
-      <%= @item.name %>
-      <%= @item.introduction %>
-      <%= "¥" %>
-      <%= @item.price %>
-      <%= f.hidden_field :item_id, :value => @item.id  %>
-      <%= f.select :amount,*[1..10] %>
-      <%= f.submit"カートに入れる", class:'btn btn-success'; %>
+      <div class="card-body">
+        <h5 class="card-title"><%= @item.name %></h5>
+        <p class="card-text"><%= @item.introduction %></p>
+        <p class="card-text">
+          <%= "¥" %><%= @item.with_tax_price %><%= "(税込)" %>
+        </p>
+        <%= f.hidden_field :item_id, :value => @item.id  %>
+        <p class="card-text"><%= "個数を選択" %></br>
+        <%= f.select :amount,*[1..10] %></br></p>
+        <%= f.submit"カートに入れる", class:'btn btn-success'; %>
     </div>
   </div>
   <% end %>

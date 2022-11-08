@@ -61,8 +61,7 @@
               </li>
 
               <% elsif customer_signed_in? %>
-              <ul>ようこそ<%= current_customer.first_name %>
-              <%= current_customer.last_name %>!!</ul>
+              <li>ようこそ<%= current_customer.last_name %>さん!!</li>
               <li>
                 <%= link_to public_customers_my_page_path,class:'nav-link text-dark' do %>
                 マイページ

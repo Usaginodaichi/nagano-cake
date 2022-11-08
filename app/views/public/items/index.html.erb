@@ -1,28 +1,23 @@
 <div class="container">
   <div class="row">
-    <div class="col-auto">
-      <h2>商品一覧(全
-      <%= @items.count %>
-      件)</h2>
-      <% @items.each do |item| %>
-      <div class="items-box">
-        <table class="table">
-          <tr>
-            <th><%= link_to public_item_path(item.id) do %>
-            <%= image_tag item.get_image(200,200) %>
-            <% end %></th>
-            <td>
-              <%= item.name %>
-            </td>
-            <td>
-              <%= "¥" %>
-              <%= item.price %>
-            </td>
-          </tr>
-        </table>
-      </div>
-      <% end %>
-      <%= paginate @items %>
-    </div>
+    <h2>商品一覧(全<%= @items.count %>件)</h2>
   </div>
+
+  <div class="row row-cols-4">
+    <% @items.each do |item| %>
+    <div class="col-md-3 col-sm-12">
+      <div class="card h-100">
+        <%= link_to public_item_path(item.id) do %>
+         <%= image_tag item.get_image(200,200) %>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title"><%= item.name %></h5>
+          <p class="card-text"><%= "¥" %><%= item.price %></p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <%= paginate @items %>
+   </div>
 </div>
+<!--style="width: 17rem;"-->

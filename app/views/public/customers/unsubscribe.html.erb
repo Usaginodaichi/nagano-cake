@@ -1,15 +1,25 @@
 <div class="container">
-  <h1>本当に退会しますか?</h1>
-  <h2>退会すると、会員登録情報や</br>
-  これまでの購入履歴が閲覧できなくなります。</br>
-  退会する場合は、「退会する」をクリックしてください。</h2>
+  <div class="row">
+    <h1 class="px-3 mx-auto">
+      <strong>本当に退会しますか？</strong>
+    </h1>
+  </div>
 
- <div class="col">
-   <%= link_to "退会しない", public_customers_my_page_path(@customer), class:'btn' %>
+  <div class="row">
+    <h5 class="px-3">
+      退会すると、会員登録情報や</br>
+      これまでの購入履歴が閲覧できなくなります。</br>
+      退会する場合は、「退会する」をクリックしてください。</h2>
+    </h5>
+  </div>
+
+  <div class="row">
+   <%= link_to "退会しない", public_customers_my_page_path(@customer), class:'btn btn-primary'; %>
+  </div>
+
+  <div class="row">
+   <%= form_with model: @customer, url:public_customers_withdraw_path(@customer), method: :patch do |f| %>
+    <%= f.submit'退会する', class:'btn btn-danger'; %>
+   <% end %>
  </div>
- <%= form_with model: @customer, url:public_customers_withdraw_path(@customer), method: :patch do |f| %>
- <div class="col">
-   <%= f.submit'退会する' %>
- </div>
- <% end %>
 </div>
