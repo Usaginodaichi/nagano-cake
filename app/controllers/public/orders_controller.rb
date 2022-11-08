@@ -19,7 +19,7 @@ class Public::OrdersController < ApplicationController
       @order.address = @address.address
       @order.name = @address.name
       @order.status = 0
-    else
+    elsif params[:order][:select_address] =="2"
       @address = Address.new(address_params)
       @address.customer_id = current_customer.id
       if @address.save
@@ -28,10 +28,16 @@ class Public::OrdersController < ApplicationController
         @order.name = @address.name
         @order.status = 0
       else
+        @total = 0
         @cart_items = current_customer.cart_items.all
         @order = Order.new(order_params)
         render :confirm
       end
+    else
+      @total = 0
+      @cart_items = current_customer.cart_items.all
+      @order = Order.new(order_params)
+      render :confirm
     end
   end
 
