@@ -1,60 +1,56 @@
 <div class="container">
   <div class="row">
     <!--div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-md-5">-->
-      <h2><%= @customer.first_name %>
-      <%= @customer.last_name %>さんの会員情報編集</h2>
+      <h2><%= @customer.last_name %>
+      <%= @customer.first_name %>さんの会員情報編集</h2>
   </div>
-  <table class="table">
-    <tbody>
-      <tr>
-        <td>会員ID</td>
-        <td><%= @customer.id %></td>
-      </tr>
-    </tbody>
 
-      <%= form_with model: @customer, url:admin_customer_path(@customer), method: :patch do |f| %>
-      <div class="form-group">
-        <label for="inputname">氏名</label>
+  <div class="row">
+    <h5>会員ID<%= @customer.id %></h5>
+  </div>
+
+  <div class="row">
+    <%= form_with model: @customer, url:admin_customer_path(@customer), method: :patch do |f| %>
+    <div class="form-group">
+      <label for="inputname">氏名</label>
         <%= f.text_field :last_name, autofocus:true, id:"inputName", placeholder:"姓" %>&nbsp;
         <%= f.text_field :first_name, autofocus:true, id:"inputName", placeholder:"名" %>
-      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputname_kana">フリガナ</label>
+       <%= f.text_field :last_name_kana, autofocus:true, id:"inputName_kana", placeholder:"セイ" %>&nbsp;
+       <%= f.text_field :first_name_kana, autofocus:true, id:"inputName_kana", placeholder:"メイ" %>
+    </div>
 
-      <div class="form-group">
-        <label for="inputname_kana">フリガナ</label>
-        <%= f.text_field :last_name_kana, autofocus:true, id:"inputName_kana", placeholder:"セイ" %>&nbsp;
-        <%= f.text_field :first_name_kana, autofocus:true, id:"inputName_kana", placeholder:"メイ" %>
-      </div>
+    <div class="form-group">
+      <label for="inputpostal_code">郵便番号</label>
+      <%= f.text_field :postal_code, autofocus:true, id:"inputpostal_code", placeholder:"郵便番号" %>
+    </div>
 
-      <div class="form-group">
-        <label for="inputpostal_code">郵便番号</label>
-        <%= f.text_field :postal_code, autofocus:true, id:"inputpostal_code", placeholder:"郵便番号" %>
-      </div>
+    <div class="form-group">
+      <label for="inputaddress">住所</label>
+      <%= f.text_area :address, autofocus:true, id:"inputaddress", placeholder:"住所" %>
+    </div>
 
-      <div class="form-group">
-        <label for="inputaddress">住所</label>
-        <%= f.text_area :address, autofocus:true, id:"inputaddress", placeholder:"住所" %>
-      </div>
+    <div class="form-group">
+      <label for="inputtelephone_number">電話番号</label>
+      <%= f.text_field :telephone_number, autofocus:true, id:"inputtelephone_number", placeholder:"電話番号" %>
+    </div>
 
-      <div class="form-group">
-        <label for="inputtelephone_number">電話番号</label>
-        <%= f.text_field :telephone_number, autofocus:true, id:"inputtelephone_number", placeholder:"電話番号" %>
-      </div>
+    <div class="form-group">
+      <label for="inputemail">メールアドレス</label>
+      <%= f.text_field :email, autofocus:true, id:"inputemail", placeholder:"example@email.com" %>
+    </div>
+    <div class="form-group">
+      <%= f.radio_button :is_deleted, :true %>
+      <%= f.label :is_deleted, "退会" %>
+      <%= f.radio_button :is_deleted, false %>
+      <%= f.label :is_deleted, "有効" %>
+    </div>
 
-      <div class="form-group">
-        <label for="inputemail">メールアドレス</label>
-        <%= f.text_field :email, autofocus:true, id:"inputemail", placeholder:"example@email.com" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.radio_button :is_deleted, :true %>
-        <%= f.label :is_deleted, "退会" %>
-        <%= f.radio_button :is_deleted, false %>
-        <%= f.label :is_deleted, "有効" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.submit"変更を保存" %>
-      </div>
+    <div class="form-group">
+      <%= f.submit"変更を保存" %>
+    </div>
     <% end %>
   </div>
 </div>
