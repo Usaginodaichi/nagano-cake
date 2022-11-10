@@ -15,9 +15,11 @@
 
           <tr>
             <td>配送先</td>
-            <% if @order.address.length < 10 %>
+            <% if @order.address.length < 30 %>
              <td>
-              <%= "〒" + @order.postal_code + " " + @order.address + " " + @order.customer.last_name + " " + @order.customer.first_name %>
+              <%= "〒" %><%= @order.postal_code %></br>
+              <%= @order.address %></br>
+              <%= @order.name %>
              </td>
             <% else %>
              <td><%= @order.address %></td>
