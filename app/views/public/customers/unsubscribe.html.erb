@@ -19,7 +19,7 @@
 
   <div class="row">
    <%= form_with model: @customer, url:public_customers_withdraw_path(@customer), method: :patch do |f| %>
-    <%= f.submit'退会する', class:'btn btn-danger'; %>
+    <%= f.submit'退会する', "data-confirm" => "本当に退会してもよろしいですか？", class:'btn btn-danger'; %>
    <% end %>
  </div>
 </div>
